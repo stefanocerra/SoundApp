@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>Meine Alben</title>
@@ -28,7 +28,7 @@
         echo "<br>";
 
         $album_id = $row['id_album'];
-        $query = $mysqli->prepare("SELECT * FROM songs WHERE fid_album = ?");
+        $query = $mysqli->prepare("SELECT * FROM songs WHERE fid_album = ? LIMIT 3");
         $query->bind_param('i',$album_id);
         $query->execute();
         $result_song = $query->get_result();
@@ -42,6 +42,8 @@
         <?php endwhile;
 
         echo "<a href='detail.php?id=$row[id_album]'><input type='button' value='Album ansehen'></a>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
     }
 ?>
-
