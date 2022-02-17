@@ -79,7 +79,11 @@
                 $query = $mysqli->prepare("UPDATE album SET number_songs=? WHERE id_album=?");
                 $query->bind_param('is',$song_number, $folderid);
                 $query->execute();
+                echo "<br>";
                 echo "Die Dateien wurden erfolgreich hinzugefügt!";
+                echo "<br>";
+                echo "<br>";
+                echo "<a href='album.php'><input type='button' value='Alben anzeigen'></a>";
             }
         }
     }

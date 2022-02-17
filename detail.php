@@ -6,47 +6,47 @@
 </head>
 <body>
     <a href="album.php"><input type="button" value="Zurück"></a>
-
-    <div class="album">
-        <div class="details">
-
-        </div>
-        <div class="songs">
-
-        </div>
-    </div>
+    <br>
+    <br>
 </body>
 </html>
 
 <?php
     require 'connector.php';
 
-    $result = $mysqli->query("SELECT * FROM album");
+    $id = $_GET['id'];
 
-    while ($row = mysqli_fetch_assoc($result)) {
+    $query_album = $mysqli->prepare("SELECT * FROM album WHERE id_album = ?");
+    $query_album->bind_param('i',$id);
+    $query_album->execute();
 
-        $folderid = $row['id_album'];
-        $covername = $row['cover_file'];
-        $path = "/uk-307/files/$folderid";
-        $songs_number = $row['number_songs'];
+    $result = $query_album->get_result();
 
-        echo "<img src='$path/$covername' style='width: 400px'>";
-        echo "$row[titel] ";
-        echo "<br>";
+    $row = mysqli_fetch_assoc($result);
 
-        $album_id = $row['id_album'];
-        $query = $mysqli->prepare("SELECT * FROM songs WHERE fid_album = ?");
-        $query->bind_param('i',$album_id);
-        $query->execute();
-        $result_song = $query->get_result();
+    $folderid = $id;
+    $covername = $row['cover_file'];
+    $path = "/uk-307/files/$folderid";
+    $songs_number = $row['number_songs'];
 
-        while ($row_song = mysqli_fetch_assoc($result_song)): ?>
-            <h3><?=$row_song['song_file']?></h3>
-            <audio controls>
-                <source src="<?=$path . '/' . $row_song['song_file']?>">
-            </audio>
-            <br>
-        <?php endwhile;
+    echo "$row[titel] ";
+    echo "<br>";
+    echo "$row[description]";
+    echo "<br>";
+    echo "<img src='$path/$covername' style='width: 400px'>";
+    echo "<br>";
 
-        echo "<a href='detail.php?id=$row[id_album]'><input type='button' value='Album ansehen'></a>";
-    }
+    $query = $mysqli->prepare("SELECT * FROM songs WHERE fid_album = ?");
+    $query->bind_param('i',$id);
+    $query->execute();
+
+    $result_song = $query->get_result();
+
+    while ($row_song = mysqli_fetch_assoc($result_song)): ?>
+        <h3><?=$row_song['song_file']?></h3>
+        <audio controls>
+            <source src="<?=$path . '/' . $row_song['song_file']?>">
+        </audio>
+        <br>
+    <?php endwhile;
+
