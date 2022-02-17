@@ -75,7 +75,6 @@
                             $song_number++;
                         }
                     }
-
                 }
                 $query = $mysqli->prepare("UPDATE album SET number_songs=? WHERE id_album=?");
                 $query->bind_param('is',$song_number, $folderid);
