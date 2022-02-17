@@ -44,9 +44,6 @@
 
         $folderid = $query->insert_id;
 
-        echo $folderid;
-
-
         $dir = $_SERVER['DOCUMENT_ROOT'];
         mkdir("$dir/uk-307/files/$folderid", 0777, true);
 
@@ -63,10 +60,9 @@
 
             if (move_uploaded_file($_FILES['bild']['tmp_name'], $path)) {
                 $count_files = count($_FILES['music']['name']);
-
+                $song_number = 0;
                 for($i = 0; $i < $count_files ; $i++){
                     $music = $finfo->file($_FILES['music']['tmp_name'][$i]);
-
                     if ($music === 'audio/mpeg' OR $music === 'audio/ogg') {
                         $musictitle = $_FILES['music']['name'][$i];
                         $path = dirname(__FILE__)."/files/$folderid/".$musictitle;
@@ -76,11 +72,15 @@
                         $query->execute();
 
                         if (move_uploaded_file($_FILES['music']['tmp_name'][$i], $path)){
-
+                            $song_number++;
                         }
-                        echo "Die Dateien wurden erfolgreich hinzugefügt!";
                     }
+
                 }
+                $query = $mysqli->prepare("UPDATE album SET number_songs=? WHERE id_album=?");
+                $query->bind_param('is',$song_number, $folderid);
+                $query->execute();
+                echo "Die Dateien wurden erfolgreich hinzugefügt!";
             }
         }
     }
