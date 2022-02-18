@@ -5,3 +5,39 @@
     border-radius: 1rem;
     padding: 1rem;
 }
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.formHeader{
+    margin-top: 0;
+}
+
+.alleAlben{
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.alleAlbenContent{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.alleAlbenContent *{
+    display: block;
+}
+
+.button{
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
