@@ -3,5 +3,29 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding: .5rem;
+}
+
+.album{
+    font-family: "Nunito", sans-serif;
+    color: lightblue;
+    background-color: aliceblue;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 800px;
+    justify-content: center;
+}
+
+.albumContent{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    padding-bottom: 5rem;
+}
+
+.albumCover img{
+    border-radius: 1rem;
+}
+
+.button{
+    margin: 0.2rem 0 1rem;
 }
