@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styledetail.css">
+    <link rel="stylesheet" href="css/styledetail.css">
     <title>Album Detail</title>
 </head>
 <body>

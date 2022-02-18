@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="stylenewalbum.css">
+    <link rel="stylesheet" href="css/stylenewalbum.css">
     <title>Neues Album</title>
 </head>
 <body>
