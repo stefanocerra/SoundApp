@@ -5,7 +5,7 @@
     <title>Meine Alben</title>
 </head>
 <body>
-    <a href="newalbum.php"><input type="button" value="Neues Album hinzufügen"></a>
+    <a href="index.php"><input type="button" value="Neues Album hinzufügen"></a>
     <br>
     <h1>Meine Alben</h1>
 </body>

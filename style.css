@@ -1,0 +1,50 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.newAlbum{
+    font-family: "Nunito", sans-serif;
+    color: lightblue;
+    background-color: aliceblue;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.textInput{
+    resize: none;
+    border: 2px solid lightblue;
+    border-radius: .5rem;
+    outline: none;
+    padding: .2rem .4rem;
+}
+
+.formHeader{
+    margin-top: 0;
+}
+
+.newAlbumForm{
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.formElement{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.formElement *{
+    display: block;
+}
+
+.button{
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
