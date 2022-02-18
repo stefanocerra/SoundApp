@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.detail{
+    font-family: "Nunito", sans-serif;
+    color: lightblue;
+    background-color: aliceblue;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 800px;
+}
+
+.deteilContent{
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.deteilInfo{
+    width: 50%;
+    max-width: 400px;
+}
+
+.deteilCover img{
+    border-radius: 1rem;
+}

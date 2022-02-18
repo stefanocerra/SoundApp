@@ -2,13 +2,11 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="styledetail.css">
     <title>Album Detail</title>
 </head>
 <body>
     <div class="detail">
-        <div class="detailContent">
-            <a href="album.php"><input type="button" value="Zurück"></a>
-        </div>
         <?php
             require 'connector.php';
 
@@ -27,31 +25,34 @@
             $path = "/uk-307/files/$folderid";
             $songs_number = $row['number_songs'];
         ?>
-
-            <div class="deteilContent">
-                <p><?=$row['titel']?></p>
-            </div>
-            <div class="deteilContent">
-                <p><?=$row['description']?></p>
-            </div>
-            <div class="deteilContent">
+        <div class="deteilInfo">
+            <a href="album.php"><input type="button" value="Zurück"></a>
+            <h2><?=$row['titel']?></h2>
+            <p><?=$row['description']?></p>
+        </div>
+        <div class="deteilContent">
+            <div class="deteilCover">
                 <img src=<?="$path/$covername"?> style='width: 400px'>
             </div>
-        <?php
-            $query = $mysqli->prepare("SELECT * FROM songs WHERE fid_album = ?");
-            $query->bind_param('i',$id);
-            $query->execute();
+            <div class="deteilSongs">
+                <?php
+                $query = $mysqli->prepare("SELECT * FROM songs WHERE fid_album = ?");
+                $query->bind_param('i',$id);
+                $query->execute();
 
-            $result_song = $query->get_result();
+                $result_song = $query->get_result();
 
-            while ($row_song = mysqli_fetch_assoc($result_song)): ?>
-                <h3><?=$row_song['song_file']?></h3>
-                <audio controls>
-                    <source src="<?=$path . '/' . $row_song['song_file']?>">
-                </audio>
-                <br>
-            <?php endwhile;
-        ?>
+                while ($row_song = mysqli_fetch_assoc($result_song)): ?>
+                    <div class="song">
+                        <h3><?=$row_song['song_file']?></h3>
+                        <audio controls>
+                            <source src="<?=$path . '/' . $row_song['song_file']?>">
+                        </audio>
+                    </div>
+                <?php endwhile;
+                ?>
+            </div>
+        </div>
     </div>
 </body>
 </html>
