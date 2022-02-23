@@ -27,7 +27,7 @@
         ?>
         <div class="deteilInfo">
             <a href="album.php"><input type="button" value="Zurück"></a>
-            <a href="delete.php?id=$row['$id']"><input type="button" value="Album löschen"></a>
+            <a href='delete.php?id=<?=$id?>'><input type="button" value="Album löschen"></a>
             <h2><?=$row['titel']?></h2>
             <p><?=$row['description']?></p>
         </div>
