@@ -26,4 +26,4 @@
     $query->bind_param('i', $id);
     $query->execute();
 
-    header("Location: album.php");
+    header("Location: index.php");
