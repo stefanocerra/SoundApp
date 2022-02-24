@@ -58,40 +58,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Neues Album</title>
 </head>
 <body>
-    <div class="newAlbum">
-            <h1 class="formHeader">Neues Album</h1>
-        <form action="index.php" method="POST" enctype="multipart/form-data">
-            <div class="newAlbumForm">
-                <div class="formElement">
-                    <label>Titel</label>
-                    <input type="text" name="titel" required class="textInput">
-                </div>
-                <div class="formElement">
-                    <label>Beschreibung</label>
-                    <textarea name="imagedescription" rows="4" cols="50" class="textInput"></textarea >
-                </div>
-                <div class="formElement">
-                    <label>Bild</label>
-                    <input type="file" name="bild" accept=".png, .jpg, .gif, .jpeg" required>
-                </div>
-                <div class="formElement">
-                    <label>Musiktitel</label>
-                    <input type="file" name="music[]" multiple accept=".mp3, .ogg" required>
-                </div>
-                <div class="formElement">
-                    <div></div>
-                    <input type="submit" value="Save">
-                </div>
-                <?php
-                if (isset($musictitle)):
-                    ?>
-                    <div class="formElement">
-                        <span>Dateien wurden hinzugefügt!</span>
-                        <a href='album.php'><input type='button' value='Alben anzeigen' class="button"></a>
-                    </div>
-                <?php endif ?>
+<div class="newAlbum">
+    <h1 class="formHeader">Neues Album</h1>
+    <form action="index.php" method="POST" enctype="multipart/form-data">
+        <div class="newAlbumForm">
+            <div class="formElement">
+                <label>Titel</label>
+                <input type="text" name="titel" required class="textInput">
             </div>
-        </form>
-    </div>
+            <div class="formElement">
+                <label>Beschreibung</label>
+                <textarea name="imagedescription" rows="4" cols="50" class="textInput"></textarea >
+            </div>
+            <div class="formElement">
+                <label>Bild</label>
+                <input type="file" name="bild" accept=".png, .jpg, .gif, .jpeg" required>
+            </div>
+            <div class="formElement">
+                <label>Musiktitel</label>
+                <input type="file" name="music[]" multiple accept=".mp3, .ogg" required>
+            </div>
+            <div class="formElement">
+                <div></div>
+                <input type="submit" value="Save">
+            </div>
+                <div class="formElement">
+                    <?php
+                    if (isset($musictitle)):
+                    ?>
+                    <span>Dateien wurden hinzugefügt!</span>
+                    <?php else: ?>
+                    <div></div>
+                    <?php endif ?>
+                    <a href='album.php'><input type='button' value='Alben anzeigen' class="button"></a>
+                </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>
