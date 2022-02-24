@@ -18,7 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bild = $finfo->file($_FILES['bild']['tmp_name']);
 
     if ($bild === 'image/jpeg' OR $bild === 'image/jpg' OR $bild === 'image/png' OR $bild === 'image/gif') {
-        $covername = uniqid().'.jpg';
+
+        if ($bild === 'image/jpeg') {
+            $covername = uniqid() . '.jepg';
+        } else if ($bild === 'image/jpg') {
+            $covername = uniqid() . '.jpg';
+        } else if ($bild === 'image/png') {
+            $covername = uniqid().'.png';
+        } else {
+            $covername = uniqid().'.gif';
+        }
+
         $path = dirname(__FILE__)."/files/$folderid/".$covername;
 
         $query = $mysqli->prepare("UPDATE album SET cover_file=? WHERE id_album=?");
