@@ -28,3 +28,7 @@ body{
 .deteilCover img{
     border-radius: 1rem;
 }
+
+img {
+    object-fit: cover;
+}

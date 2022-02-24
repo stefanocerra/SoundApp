@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($bild === 'image/jpeg' OR $bild === 'image/jpg' OR $bild === 'image/png' OR $bild === 'image/gif') {
 
         if ($bild === 'image/jpeg') {
-            $covername = uniqid() . '.jepg';
+            $covername = uniqid() . '.jpeg';
+            $covername = uniqid() . '.jpeg';
         } else if ($bild === 'image/jpg') {
             $covername = uniqid() . '.jpg';
         } else if ($bild === 'image/png') {

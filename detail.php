@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/styledetail.css">
-    <title>Album Detail</title>
+    <title>Album Deteil</title>
 </head>
 <body>
     <div class="detail">
@@ -33,7 +33,7 @@
         </div>
         <div class="deteilContent">
             <div class="deteilCover">
-                <img src=<?="$path/$covername"?> style='width: 400px'>
+                <img src='<?="$path/$covername"?>' style="width: 400px; height: 400px">
             </div>
             <div class="deteilSongs">
                 <?php
@@ -43,12 +43,17 @@
 
                 $result_song = $query->get_result();
 
-                while ($row_song = mysqli_fetch_assoc($result_song)): ?>
+                while ($row_song = mysqli_fetch_assoc($result_song)):
+                    $song_id = $row_song['id_song'];
+
+                    ?>
                     <div class="song">
                         <h3><?=$row_song['song_file']?></h3>
+
                         <audio controls>
                             <source src="<?=$path . '/' . $row_song['song_file']?>">
                         </audio>
+                        <a href="deletesong.php?id=<?=$song_id?>&album=<?=$id?>"><input type="button" value="Löschen"></a>
                     </div>
                 <?php endwhile;
                 ?>
