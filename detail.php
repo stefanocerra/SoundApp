@@ -28,6 +28,11 @@
         <div class="deteilInfo">
             <a href="index.php"><input type="button" value="Zurück"></a>
             <a href='delete.php?id=<?=$id?>'><input type="button" value="Album löschen"></a>
+            <form action="addsong.php" method="post" enctype="multipart/form-data">
+                <input type="submit" value="Songs speichern">
+                <input type="file" name="addsong[]" accept=".mp3, .ogg" multiple>
+                <input type="hidden" name="album" value="<?=$id?>">
+            </form>
             <h2><?=$row['titel']?></h2>
             <p><?=$row['description']?></p>
         </div>

@@ -13,9 +13,7 @@
     $query->execute();
 
     $result = $mysqli->query("SELECT * FROM album where id_album = $album_id");
-    echo $album_id;
     $row = mysqli_fetch_assoc($result);
-    echo 'gaaaagel';
     $number_songs = $row['number_songs'] -1;
 
     $query = $mysqli->prepare("UPDATE album SET number_songs=? WHERE id_album=?");
